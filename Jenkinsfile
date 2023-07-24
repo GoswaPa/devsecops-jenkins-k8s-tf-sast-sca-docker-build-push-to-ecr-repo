@@ -18,25 +18,25 @@ pipeline {
 			}
     }
 
-	stage('Build') { 
-            steps { 
-               withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
-                 script{
-                 app =  docker.build("p_devsecops_ecr")
-                 }
-               }
-            }
-    }
+	// stage('Build') { 
+ //            steps { 
+ //               withDockerRegistry([credentialsId: "dockerlogin", url: ""]) {
+ //                 script{
+ //                 app =  docker.build("p_devsecops_ecr")
+ //                 }
+ //               }
+ //            }
+ //    }
 
-	stage('Push') {
-            steps {
-                script{
-                    docker.withRegistry('https://239312700453.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:aws-credentials') {
-                    app.push("latest")
-                    }
-                }
-            }
-    	}
+	// stage('Push') {
+ //            steps {
+ //                script{
+ //                    docker.withRegistry('https://239312700453.dkr.ecr.us-west-2.amazonaws.com', 'ecr:us-west-2:aws-credentials') {
+ //                    app.push("latest")
+ //                    }
+ //                }
+ //            }
+ //    	}
 	    
   }
 }
